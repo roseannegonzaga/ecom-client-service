@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import auth from "@/api/aut/auth";
+import auth from "@/api/auth/auth";
 
 export default {
   name: "Login",
@@ -76,18 +76,24 @@ export default {
   },
   methods: {
     async submit(){
-      await auth.login({
+      await auth
+      .login({
         email: this.email,
         password: this.password, 
     })
     .then((response) => {
       const data = response.data;
-    })
-    }
 
-    }
-    submit() {
-      console.log(this.email, this.password);
+      data.expiration_date = new Date(Date.now() + data.expires_in).toISOString();
+
+      localStorage.setItem("auth", JSON.stringify(data));
+
+      console.log(data);
+
+
+    })
+      .catch()
+      .finally();
     },
   },
 };
