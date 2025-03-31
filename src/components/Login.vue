@@ -88,7 +88,7 @@ export default {
 
       localStorage.setItem("auth", JSON.stringify(data));
 
-      console.log(data);
+      window.location.href = "/home";
 
 
     })

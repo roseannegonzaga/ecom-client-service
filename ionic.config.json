@@ -1,0 +1,7 @@
+{
+  "name": "ecom-client-service",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
